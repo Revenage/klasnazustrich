@@ -1,7 +1,7 @@
 /**
  * Created by reven on 19.01.2016.
  */
-$(function(){
+$(function () {
 
     var OlderPosts = (function () {
 
@@ -34,8 +34,39 @@ $(function(){
         });
     });
 
+    var MailSending = function () {
+
+        $('#send-button').on('click', function (e) {
+            e.preventDefault();
+            $.ajax({
+                    type: 'POST',
+                    url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+                    data: {
+                        key: 'vvYHIWvAZKQooptpUCrd_Q',
+                        message: {
+                            from_email: 'kozak.olga.info@gmail.com',
+                            to: [
+                                {
+                                    email: 'kozak.olga.info@gmail.com',
+                                    name: 'name',
+                                    type: 'to'
+                                }
+                            ],
+                            autotext: 'true',
+                            subject: 'YOUR SUBJECT HERE!',
+                            html: 'YOUR EMAIL CONTENT HERE! YOU CAN USE HTML!'
+                        }
+                    }
+                })
+                .done(function (response) {
+                    console.log(response); // if you're into that sorta thing
+                });
+        })
+
+    };
 
 
-
-    OlderPosts(); /* Show/hide posts on home page*/
+    MailSending();
+    OlderPosts();
+    /* Show/hide posts on home page*/
 });

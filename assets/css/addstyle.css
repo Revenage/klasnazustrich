@@ -1,0 +1,9 @@
+a {
+    transition: .3s;
+}
+
+a:hover {
+    transition: .3s;
+}
+
+
