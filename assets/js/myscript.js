@@ -47,7 +47,7 @@ $(function () {
                             from_email: 'kozak.olga.info@gmail.com',
                             to: [
                                 {
-                                    email: 'kozak.olga.info@gmail.com',
+                                    email: 'info@klasnazustrich.esy.es',
                                     name: 'name',
                                     type: 'to'
                                 }
