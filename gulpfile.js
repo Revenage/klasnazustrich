@@ -10,9 +10,9 @@ var autoprefixer = require('gulp-autoprefixer');
 var minifyCss = require('gulp-minify-css');
 
 gulp.task("js", function() {
-    gulp.src("./assets/js/*.js")
+    gulp.src(["./assets/js/jquery.min.js", "./assets/js/bootstrap.min.js", "./assets/js/clean-blog.min.js", "./assets/js/myscript.js"])
         .pipe(concat("script.min.js"))
-        .pipe(uglify()) //min
+        /*.pipe(uglify())*/ //min
         .pipe(gulp.dest("./dest"));
 });
 
@@ -30,8 +30,8 @@ gulp.task('css', function () {
 
 
 gulp.task("watch", function(){
-    gulp.watch("./assets/*.js", ["js"]);
-    gulp.watch("./assets/*.css", ["css"]);
+    gulp.watch("./assets/js/*.js", ["js"]);
+    gulp.watch("./assets/css/*.css", ["css"]);
 });
 
 gulp.task("default", ["css", "js", "watch"]);
