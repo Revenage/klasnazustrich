@@ -38,23 +38,37 @@ $(function () {
 
         $('#send-button').on('click', function (e) {
             e.preventDefault();
+            var name = $('#name').val();
+            var email = $('#email').val();
+            var tel = $('#phone').val();
+            var message = $('#message').val();
+            var text =
+                '<h4>Контактные данные:</h4>' +
+                '<ul>' +
+                '<li>'+name+'</li>' +
+                '<li>'+email+'</li>' +
+                '<li>'+tel+'</li>' +
+                '</ul>' +
+                '<hr>' +
+                '<h4>Текст сообщения</h4>' +
+                '<p>'+message+'</p>';
             $.ajax({
                     type: 'POST',
                     url: 'https://mandrillapp.com/api/1.0/messages/send.json',
                     data: {
                         key: 'vvYHIWvAZKQooptpUCrd_Q',
                         message: {
-                            from_email: 'kozak.olga.info@gmail.com',
+                            from_email: 'post@klasnazustrich.esy.es',
                             to: [
                                 {
-                                    email: 'info@klasnazustrich.esy.es',
-                                    name: 'name',
+                                    email: 'kozak.olga.info@gmail.com',
+                                    name: 'Ольга Яковлевна',
                                     type: 'to'
                                 }
                             ],
                             autotext: 'true',
-                            subject: 'YOUR SUBJECT HERE!',
-                            html: 'YOUR EMAIL CONTENT HERE! YOU CAN USE HTML!'
+                            subject: 'Сообщение с сайта KlasnaZustrich',
+                            html: text
                         }
                     }
                 })
