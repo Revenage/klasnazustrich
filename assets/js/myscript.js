@@ -85,7 +85,7 @@ $(function () {
     });
 
 
-    MailSending();
+    /*MailSending();*/
     OlderPosts();
     ToTop();
     /* Show/hide posts on home page*/
