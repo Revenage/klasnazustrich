@@ -65,8 +65,28 @@ $(function () {
 
     };
 
+    var ToTop = (function () {
+        var scroll = $('#scroll');
+        $(window).on('scroll', function () {
+            if ($(window).scrollTop() > window.innerHeight) {
+                scroll.addClass('active');
+            } else {
+                scroll.removeClass('active');
+            }
+        });
+
+        scroll.on('click', function (e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: 0
+            }, 500);
+        });
+
+    });
+
 
     MailSending();
     OlderPosts();
+    ToTop();
     /* Show/hide posts on home page*/
 });
