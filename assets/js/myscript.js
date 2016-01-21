@@ -36,7 +36,65 @@ $(function () {
 
     var MailSending = function () {
 
-        $('#send-button').on('click', function (e) {
+        $('#contactForm')
+            .find('.form-group')
+            .each(function(i, form) {
+                var tForm = $(form).find('.form-control');
+
+                tForm
+                    .on('focus', function () {
+                        $(this).attr('placeholder', '');
+                           $(this).parent().addClass('floating-label-form-group-with-value');
+                    })
+                    .on('blur', function () {
+                        if ($(this).val() == null || $(this).val() == '') {
+                            $(this).parent().removeClass('floating-label-form-group-with-value');
+                            $(this).attr('placeholder', $(this).attr('name'));
+                        } else {
+                            $(this).parent().addClass('floating-label-form-group-with-value')
+                            $(this).parent().removeClass('error-form-required')
+                        }
+                    })
+                    .on('change', function () {
+                            $(this).parent().removeClass('error-form-required')
+                    })
+
+            });
+
+
+$('#send-button').on('click', function(e) {
+    e.preventDefault();
+    var trig = 1;
+    $('#contactForm')
+        .find('.form-group')
+        .each(function(i, form) {
+            var tForm = $(form).find('.form-control');
+            if (tForm.val() == null || tForm.val() == '') {
+                $(form).addClass('error-form-required');
+                trig = trig * 0;
+            } else {
+                $(form).removeClass('error-form-required');
+                trig = trig * 1;
+            }
+        });
+    if (trig) {
+        $(this).addClass('btn-success');
+        postData();
+        setTimeout(function(){
+            $(this).removeClass('btn-success');
+        }, 2000);
+    } else {
+        $(this).addClass('btn-danger');
+        setTimeout(function(){
+            $(this).removeClass('btn-danger');
+        }, 2000);
+        return;
+    }
+});
+
+
+
+        function postData () {
             e.preventDefault();
             var name = $('#name').val();
             var email = $('#email').val();
@@ -52,6 +110,7 @@ $(function () {
                 '<hr>' +
                 '<h4>Текст сообщения</h4>' +
                 '<p>'+message+'</p>';
+
             $.ajax({
                     type: 'POST',
                     url: 'https://mandrillapp.com/api/1.0/messages/send.json',
@@ -75,7 +134,7 @@ $(function () {
                 .done(function (response) {
                     console.log(response); // if you're into that sorta thing
                 });
-        })
+        };
 
     };
 
