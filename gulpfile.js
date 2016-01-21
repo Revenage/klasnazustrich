@@ -10,9 +10,9 @@ var autoprefixer = require('gulp-autoprefixer');
 var minifyCss = require('gulp-minify-css');
 
 gulp.task("js", function() {
-    gulp.src(["./assets/js/jquery.min.js", "./assets/js/bootstrap.min.js", "./assets/js/clean-blog.min.js", "./assets/js/myscript.js"])
+    gulp.src([/*"./assets/js/jquery.min.js", "./assets/js/bootstrap.min.js", "./assets/js/clean-blog.min.js",*/ "./assets/js/myscript.js"])
         .pipe(concat("script.min.js"))
-        /*.pipe(uglify())*/ //min
+        .pipe(uglify()) //min
         .pipe(gulp.dest("./dest"));
 });
 
