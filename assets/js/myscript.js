@@ -99,8 +99,8 @@ $(function () {
     });
 
 
-    MailSending();
-    OlderPosts();
-    ToTop();
-    /* Show/hide posts on home page*/
+    MailSending(); // feedback form
+    OlderPosts();// Show/hide posts on home page
+    ToTop(); // to top button
+
 });

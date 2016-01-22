@@ -8,12 +8,24 @@ var concat = require("gulp-concat");
 var uglify = require("gulp-uglify");
 var autoprefixer = require('gulp-autoprefixer');
 var minifyCss = require('gulp-minify-css');
+var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
 
 gulp.task("js", function() {
-    gulp.src(["./assets/js/jquery.min.js", "./assets/js/bootstrap.min.js", "./assets/js/clean-blog.min.js", "./assets/js/myscript.js"])
+    gulp.src([/*"./assets/js/jquery.min.js",*//* "./assets/js/bootstrap.min.js",*/ "./assets/js/myscript.js"])
         .pipe(concat("script.min.js"))
         /*.pipe(uglify())*/ //min
         .pipe(gulp.dest("./dest"));
+});
+
+gulp.task("img", function() {
+    gulp.src('./dest/img/*')
+        .pipe(imagemin({
+            progressive: true,
+            svgoPlugins: [{removeViewBox: false}],
+            use: [pngquant()]
+        }))
+        .pipe(gulp.dest('./dest/img'));
 });
 
 gulp.task('css', function () {
@@ -26,8 +38,6 @@ gulp.task('css', function () {
         .pipe(minifyCss({compatibility: 'ie8'})) //min
         .pipe(gulp.dest('./dest'));
 });
-
-
 
 gulp.task("watch", function(){
     gulp.watch("./assets/js/*.js", ["js"]);
