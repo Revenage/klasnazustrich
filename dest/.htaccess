@@ -8,6 +8,9 @@ order allow,deny
 deny from all
 </files>
 
+RewriteEngine On
+RewriteRule ^index.html$ / [QSA,R]
+
 AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/javascript text/css application/x-javascript
 BrowserMatch ^Mozilla/4 gzip-only-text/html
 BrowserMatch ^Mozilla/4.0[678] no-gzip

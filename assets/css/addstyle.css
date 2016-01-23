@@ -6,6 +6,25 @@ a:hover {
     transition: .3s;
 }
 
+a.btn {
+    text-decoration: none;
+}
+
+.btn-info-outline {
+    background: rgba(0, 0, 0, 0);
+    color: #269abc;
+    border: 1px solid #269abc !important;
+}
+
+.btn-info-outline i{
+    vertical-align: middle;
+}
+
+.btn-info-outline:hover {
+    background: #269abc;
+    color: #ffffff !important;
+}
+
 #scroll {
     display: block;
     width: 50px;

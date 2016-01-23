@@ -164,9 +164,13 @@ $(function () {
 
     });
 
+    var bootstrapSettings = (function(){
+            $('[data-toggle="popover"]').popover();
+    });
+
 
     MailSending();
-    OlderPosts();
+    OlderPosts();// Show/hide posts on home page
     ToTop();
-    /* Show/hide posts on home page*/
+    bootstrapSettings();
 });
