@@ -65,3 +65,15 @@ a.btn {
 .error-form-required label {
     color: firebrick;
 }
+
+.btn-info-outline.powerpoint {
+    border-color: #D24625 !important;
+    color: #D24625 !important;
+}
+
+.btn-info-outline.powerpoint:hover {
+    background: #D24625;
+    color: #fff !important;
+}
+
+
