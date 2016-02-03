@@ -34,3 +34,15 @@ a:hover {
     transition: .3s;
 }
 
+.floating-label-form-group-with-value label {
+    color: #0085a1;
+}
+.floating-label-form-group.error-form-required {
+    border-bottom : 1px solid firebrick;
+    transition: .3s;
+    background: rgba(241, 0, 0, 0.03);
+}
+
+.error-form-required label {
+    color: firebrick;
+}
